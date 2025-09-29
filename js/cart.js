@@ -114,21 +114,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-// Обновляем функцию clearCart
-clearCart: function() {
-    localStorage.removeItem('cart');
-    this.updateCartCount();
-    
-    if (window.location.pathname.includes('basket.html') || 
-        window.location.pathname.endsWith('basket.html') ||
-        window.location.pathname.endsWith('/basket')) {
-        this.displayCartItems();
-    }
-},
 
-// Добавляем функцию displayCartItems для cart объекта
-displayCartItems: function() {
-    if (typeof basketPage !== 'undefined' && basketPage.displayCartItems) {
-        basketPage.displayCartItems();
-    }
-}
