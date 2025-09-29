@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - CREATIVE PEOPLE</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="imgs/brush-pencil.jpg" alt="Кисть и карандаш" width="30">
+                <span>CREATIVE PEOPLE</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="basket.html">Корзина (<span id="cart-count">0</span>)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main>
+        <section class="basket-section">
+            <h1>Ваша корзина</h1>
+            
+            <!-- Содержимое корзины -->
+            <div id="basket-items" class="basket-items">
+                <!-- Товары будут добавляться сюда через JavaScript -->
+            </div>
+
+            <!-- Общая сумма -->
+            <div class="total-section">
+                <h3>Общая сумма: <span id="total-price">0</span> руб.</h3>
+            </div>
+
+            <!-- Кнопка оформления заказа -->
+            <button id="checkout-btn" class="checkout-btn">Оформить заказ</button>
+
+            <!-- Форма заказа (изначально скрыта) -->
+            <form id="order-form" class="order-form hidden">
+                <h3>Оформление заказа</h3>
+                
+                <div class="form-group">
+                    <label for="first-name">Имя:</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="last-name">Фамилия:</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Адрес доставки:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Контактный телефон:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <button type="submit" class="submit-order">Создать заказ</button>
+                <button type="button" id="cancel-order" class="cancel-order">Отмена</button>
+            </form>
+
+            <!-- Сообщение о успешном заказе -->
+            <div id="order-success" class="order-success hidden">
+                <h3>Заказ создан!</h3>
+                <p>Спасибо за ваш заказ. Мы свяжемся с вами в ближайшее время.</p>
+                <button onclick="location.href='index.html'">Вернуться к покупкам</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Creative People. Все права защищены.</p>
+    </footer>
+
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/basket.js"></script>
+</body>
+</html>
