@@ -10,7 +10,7 @@
         <div class="header-container">
             <!-- Логотип -->
             <a href="index.html" class="logo">
-                <img src="imgs/brush-pencil.jpg" alt="Кисть и карандаш" width="30">
+                <img src="imgs/brush-pencil.jpg" alt="Кисть и карандаш" width="50">
                 <span>CREATIVE PEOPLE</span>
             </a>
             
@@ -23,72 +23,55 @@
             </nav>
         </div>
     </header>
+<!-- О нас -->
+    <main>
+        <section class="intro">
+            <h1>Онлайн-магазин творческих товаров Creative People</h1>
+            <p>Мы делаем творчество доступным для каждого!</p>
+        </section>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">About us</a></li>
-							<li><a href="generic.html">Catalogue</a></li>
-							<li><a href="generic.html">Basket</a></li>
-						</ul>
-					</nav>
+        <!-- Каталог -->
+        <section class="catalog">
+            <h2>Каталог товаров</h2>
+            <div class="products-grid">
+                <!-- Товар 1 -->
+                <article class="product-card" data-id="1" data-price="350">
+                    <img src="imgs/pencils.jpg" alt="Цветные карандаши">
+                    <h3>Цветные карандаши KOH-I-NOOR 24 шт</h3>
+                    <p class="price">350 руб.</p>
+                    <p class="description">Набор цветных карандашей KOH-I-NOOR 24 штуки</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </article>
 
-				<!-- About us -->
-					<div id="about_us">
-						<div class="inner">
-							<header>
-								<h1>This is an online shop for creative products Creative People.</h1>
-								<p>We are Creative People, a shop selling creative supplies. It is our duty to make creativity accessible!</p>
-							</header>
-							<section class="tiles">
-								<article class="style1">
-									<span class="image">
-										<img src="imgs/pencils.jpg" alt="Картинка" width="50"/>
-									</span>
-									<a href="generic.html">
-										<h2>Coloured pencils KOH-I-NOOR 24 pieces</h2>
-										<div class="content">
-											<p>Set of a coloured pencils KOH-I-NOOR 24 pieces.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="imgs/paper.jpg" alt="Картинка" width="50"/>
-									</span>
-									<a href="generic.html">
-										<h2>White A4 paper</h2>
-										<div class="content">
-											<p>Set of a white paper 500 sheets.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="imgs/cars.jpg" alt="Картинка" width="50"/>
-									</span>
-									<a href="generic.html">
-										<h2>Stickers Cars LARSEN</h2>
-										<div class="content">
-											<p>Set of a stickers Cars LARSEN 30 elements.</p>
-										</div>
-									</a>
-								</article>
-							</section>
-						</div>
-					</div>
-			</div>
+                <!-- Товар 2 -->
+                <article class="product-card" data-id="2" data-price="280">
+                    <img src="imgs/paper.jpg" alt="Белая бумага">
+                    <h3>Белая бумага А4</h3>
+                    <p class="price">280 руб.</p>
+                    <p class="description">Набор белой бумаги 500 листов</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </article>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+                <!-- Товар 3 -->
+                <article class="product-card" data-id="3" data-price="150">
+                    <img src="imgs/cars.jpg" alt="Наклейки Машинки">
+                    <h3>Наклейки Машинки LARSEN</h3>
+                    <p class="price">150 руб.</p>
+                    <p class="description">Набор наклеек Машинки LARSEN 30 элементов</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </article>
+            </div>
+        </section>
+    </main>
 
-	</body>
+    <!-- Типо подвал -->
+    <footer>
+        <p>&copy; 2024 Creative People. Все права защищены.</p>
+    </footer>
 
+    <!-- Подключаем JavaScript -->
+    <script src="assets/js/cart.js"></script>
+</body>
 </html>
 
 
