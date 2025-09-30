@@ -134,19 +134,22 @@ main {
     background-color: #45a049;
 }
 
-/* Корзина */
+/* Стили для корзины */
 .basket-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 40px 1fr auto auto;
+    gap: 1rem;
     align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
     padding: 1rem 0;
+    margin-bottom: 1rem;
 }
 
 .basket-item img {
     width: 40px;
     height: 40px;
     object-fit: cover;
+    border-radius: 4px;
 }
 
 .item-details {
@@ -266,29 +269,16 @@ main {
     display: none;
 }
 
-/* Адаптивность */
+/* Адаптивность для корзины */
 @media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    nav ul {
-        margin-top: 1rem;
-    }
-    
-    .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-    
     .basket-item {
-        flex-direction: column;
-        text-align: center;
+        grid-template-columns: 40px 1fr;
+        gap: 0.5rem;
     }
     
-    .item-details {
-        margin-left: 0;
-        margin: 1rem 0;
+    .basket-item img {
+        width: 40px;
+        height: 40px;
     }
 }
 
