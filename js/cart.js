@@ -2,7 +2,8 @@
 const cart = {
     // Получить корзину из localStorage
     getCart: function() {
-        return JSON.parse(localStorage.getItem('cart')) || [];
+        const cartData = localStorage.getItem('cart');
+        return cartData ? JSON.parse(cartData) : [];
     },
 
     // Сохранить корзину в localStorage
@@ -39,9 +40,11 @@ const cart = {
         this.saveCart(cartItems);
         this.updateCartCount();
         
-        // Если мы на странице корзины, обновляем отображение
-        if (this.isBasketPage()) {
-            this.displayCartItems();
+        // Обновляем отображение корзины если мы на странице корзины
+        if (document.querySelector('.basket-section')) {
+            if (typeof basketPage !== 'undefined' && basketPage.displayCartItems) {
+                basketPage.displayCartItems();
+            }
         }
     },
 
@@ -57,8 +60,11 @@ const cart = {
             this.saveCart(cartItems);
             this.updateCartCount();
             
-            if (this.isBasketPage()) {
-                this.displayCartItems();
+            // Обновляем отображение корзины если мы на странице корзины
+            if (document.querySelector('.basket-section')) {
+                if (typeof basketPage !== 'undefined' && basketPage.displayCartItems) {
+                    basketPage.displayCartItems();
+                }
             }
         }
     },
@@ -90,22 +96,11 @@ const cart = {
         localStorage.removeItem('cart');
         this.updateCartCount();
         
-        if (this.isBasketPage()) {
-            this.displayCartItems();
-        }
-    },
-
-    // Проверить, находимся ли мы на странице корзины
-    isBasketPage: function() {
-        return window.location.pathname.includes('basket.html') || 
-               window.location.pathname.endsWith('basket.html') ||
-               document.querySelector('.basket-section') !== null;
-    },
-
-    // Отобразить товары в корзине (вызывает функцию из basketPage если она существует)
-    displayCartItems: function() {
-        if (typeof basketPage !== 'undefined' && basketPage.displayCartItems) {
-            basketPage.displayCartItems();
+        // Обновляем отображение корзины если мы на странице корзины
+        if (document.querySelector('.basket-section')) {
+            if (typeof basketPage !== 'undefined' && basketPage.displayCartItems) {
+                basketPage.displayCartItems();
+            }
         }
     }
 };
