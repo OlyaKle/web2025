@@ -35,15 +35,15 @@
             </div>
 
             <!-- Общая сумма -->
-            <div class="total-section">
+            <div class="total-section" style="display: none;">
                 <h3>Общая сумма: <span id="total-price">0</span> руб.</h3>
             </div>
 
             <!-- Кнопка оформления заказа -->
-            <button id="checkout-btn" class="checkout-btn">Оформить заказ</button>
+            <button id="checkout-btn" class="checkout-btn" style="display: none;">Оформить заказ</button>
 
             <!-- Форма заказа (изначально скрыта) -->
-            <form id="order-form" class="order-form hidden">
+            <form id="order-form" class="order-form" style="display: none;">
                 <h3>Оформление заказа</h3>
                 
                 <div class="form-group">
@@ -71,7 +71,7 @@
             </form>
 
             <!-- Сообщение о успешном заказе -->
-            <div id="order-success" class="order-success hidden">
+            <div id="order-success" class="order-success" style="display: none;">
                 <h3>Заказ создан!</h3>
                 <p>Спасибо за ваш заказ. Мы свяжемся с вами в ближайшее время.</p>
                 <button onclick="location.href='index.html'">Вернуться к покупкам</button>
@@ -87,6 +87,7 @@
     <script src="js/basket.js"></script>
 </body>
 </html>
+
 
 
 
