@@ -40,7 +40,7 @@ const cart = {
         this.updateCartCount();
         
         // Если мы на странице корзины, обновляем отображение
-        if (window.location.pathname.includes('basket.html')) {
+        if (this.isBasketPage()) {
             this.displayCartItems();
         }
     },
@@ -57,7 +57,7 @@ const cart = {
             this.saveCart(cartItems);
             this.updateCartCount();
             
-            if (window.location.pathname.includes('basket.html')) {
+            if (this.isBasketPage()) {
                 this.displayCartItems();
             }
         }
@@ -90,8 +90,22 @@ const cart = {
         localStorage.removeItem('cart');
         this.updateCartCount();
         
-        if (window.location.pathname.includes('basket.html')) {
+        if (this.isBasketPage()) {
             this.displayCartItems();
+        }
+    },
+
+    // Проверить, находимся ли мы на странице корзины
+    isBasketPage: function() {
+        return window.location.pathname.includes('basket.html') || 
+               window.location.pathname.endsWith('basket.html') ||
+               document.querySelector('.basket-section') !== null;
+    },
+
+    // Отобразить товары в корзине (вызывает функцию из basketPage если она существует)
+    displayCartItems: function() {
+        if (typeof basketPage !== 'undefined' && basketPage.displayCartItems) {
+            basketPage.displayCartItems();
         }
     }
 };
@@ -101,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обновляем счетчик корзины
     cart.updateCartCount();
 
-    // Добавляем обработчики для кнопок "Добавить в корзину"
+    // Добавляем обработчики для кнопок "Добавить в корзину" на главной странице
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', function() {
             const productCard = this.closest('.product-card');
@@ -114,4 +128,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
