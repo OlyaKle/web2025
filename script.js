@@ -234,7 +234,7 @@ class TodoApp {
             const emptyState = document.createElement('div');
             emptyState.className = 'empty-state';
             emptyState.textContent = this.tasks.length === 0 
-                ? 'Нет задач. Добавьте первую задачу!' 
+                ? 'Пока задач нет. Добавьте первую задачу!' 
                 : 'Задачи не найдены. Попробуйте изменить фильтры или поисковый запрос.';
             taskList.appendChild(emptyState);
             return;
