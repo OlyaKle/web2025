@@ -293,6 +293,8 @@ class TodoApp {
                 textSpan.textContent = task.text;
                 dateSpan.textContent = new Date(task.date).toLocaleDateString('ru-RU');
                 
+                const space = document.createTextNode(' ');
+                
                 // Кнопки действий
                 const actionsDiv = document.createElement('div');
                 actionsDiv.className = 'task-actions';
@@ -310,6 +312,7 @@ class TodoApp {
                 
                 taskItem.appendChild(checkbox);
                 taskItem.appendChild(textSpan);
+                taskItem.appendChild(space);  // Добавляю пробел, тк его не было
                 taskItem.appendChild(dateSpan);
                 taskItem.appendChild(actionsDiv);
             }
