@@ -1,0 +1,320 @@
+/* Сброс стандартных отступов и использование border-box для упрощения расчетов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основные стили страницы */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #faf8ef;
+    color: #776e65;
+    line-height: 1.4;
+}
+
+/* Основной контейнер с ограничением максимальной ширины */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Шапка с заголовком и счетами */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #776e65;
+}
+
+/* Контейнер для счетчиков */
+.scores {
+    display: flex;
+    gap: 10px;
+}
+
+/* Стили для каждого счетчика */
+.score-container {
+    background: #bbada0;
+    padding: 10px 15px;
+    border-radius: 6px;
+    text-align: center;
+    color: white;
+}
+
+.score-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+#score, #best-score {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Панель с кнопками управления */
+.game-info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* Базовые стили кнопок */
+.btn {
+    background: #8f7a66;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #7c6b5a;
+}
+
+/* Контейнер игрового поля */
+.game-container {
+    position: relative;
+    background: #bbada0;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Сетка игрового поля 4x4 */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+    aspect-ratio: 1;
+    position: relative;
+}
+
+/* Стили пустых ячеек */
+.cell {
+    background: rgba(238, 228, 218, 0.35);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Стили плиток (генерируются динамически) */
+.tile {
+    position: absolute;
+    width: calc(25% - 10px);
+    height: calc(25% - 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: all 0.15s ease-in-out;
+}
+
+/* Цвета плиток в зависимости от значения */
+.tile-2 { background: #eee4da; color: #776e65; }
+.tile-4 { background: #ede0c8; color: #776e65; }
+.tile-8 { background: #f2b179; color: white; }
+.tile-16 { background: #f59563; color: white; }
+.tile-32 { background: #f67c5f; color: white; }
+.tile-64 { background: #f65e3b; color: white; }
+.tile-128 { background: #edcf72; color: white; font-size: 1.8rem; }
+.tile-256 { background: #edcc61; color: white; font-size: 1.8rem; }
+.tile-512 { background: #edc850; color: white; font-size: 1.8rem; }
+.tile-1024 { background: #edc53f; color: white; font-size: 1.5rem; }
+.tile-2048 { background: #edc22e; color: white; font-size: 1.5rem; }
+
+/* Стили окна окончания игры */
+.game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(238, 228, 218, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    gap: 15px;
+}
+
+.message {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #776e65;
+}
+
+/* Поле ввода имени */
+#player-name {
+    padding: 10px;
+    border: 2px solid #bbada0;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 200px;
+}
+
+/* Кнопки управления для мобильных устройств */
+.mobile-controls {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-row {
+    display: flex;
+    gap: 20px;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    background: #8f7a66;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Стили модального окна */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 6px;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #776e65;
+}
+
+/* Стили таблицы лидеров */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Утилитный класс для скрытия элементов */
+.hidden {
+    display: none !important;
+}
+
+/* Медиа-запросы для адаптивного дизайна */
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .score-container {
+        padding: 8px 12px;
+    }
+    
+    #score, #best-score {
+        font-size: 1.2rem;
+    }
+    
+    .game-info {
+        justify-content: center;
+    }
+    
+    /* Показываем кнопки управления на мобильных */
+    .mobile-controls {
+        display: flex;
+    }
+    
+    .tile {
+        font-size: 1.5rem;
+    }
+    
+    .tile-128, .tile-256, .tile-512 {
+        font-size: 1.3rem;
+    }
+    
+    .tile-1024, .tile-2048 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Мобильные телефоны */
+@media (max-width: 480px) {
+    .game-container {
+        padding: 10px;
+    }
+    
+    .cell, .tile {
+        font-size: 1.2rem;
+    }
+    
+    .control-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
