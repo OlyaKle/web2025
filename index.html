@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Основные мета-теги для корректного отображения на всех устройствах -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini-2048</title>
+    <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Основной контейнер для всей игры -->
+    <div class="container">
+        <!-- Шапка с заголовком и счетчиками -->
+        <header>
+            <h1>2048</h1>
+            <div class="scores">
+                <!-- Контейнер для текущего счета -->
+                <div class="score-container">
+                    <div class="score-label">Счет</div>
+                    <div id="score">0</div> <!-- Динамически обновляется -->
+                </div>
+                <!-- Контейнер для лучшего счета -->
+                <div class="score-container">
+                    <div class="score-label">Рекорд</div>
+                    <div id="best-score">0</div> <!-- Динамически обновляется -->
+                </div>
+            </div>
+        </header>
+
+        <!-- Панель управления -->
+        <div class="game-info">
+            <button id="undo-btn" class="btn">Отменить ход</button>
+            <button id="restart-btn" class="btn">Новая игра</button>
+            <button id="leaders-btn" class="btn">Таблица лидеров</button>
+        </div>
+
+        <!-- Основной игровой контейнер -->
+        <div class="game-container">
+            <!-- Игровое поле 4x4, генерируется динамически -->
+            <div id="game-board" class="game-board"></div>
+            
+            <!-- Модальное окно окончания игры (изначально скрыто) -->
+            <div id="game-over" class="game-over hidden">
+                <div class="message">Игра окончена!</div>
+                <!-- Форма для сохранения рекорда -->
+                <div id="save-score-form">
+                    <input type="text" id="player-name" placeholder="Введите ваше имя" maxlength="20">
+                    <button id="save-score-btn" class="btn">Сохранить результат</button>
+                </div>
+                <!-- Сообщение после сохранения (изначально скрыто) -->
+                <div id="score-saved-message" class="hidden">Ваш рекорд сохранен!</div>
+                <button id="new-game-btn" class="btn">Начать заново</button>
+            </div>
+        </div>
+
+        <!-- Кнопки управления для мобильных устройств (изначально скрыты) -->
+        <div id="mobile-controls" class="mobile-controls hidden">
+            <div class="control-row">
+                <button id="up-btn" class="control-btn">↑</button>
+            </div>
+            <div class="control-row">
+                <button id="left-btn" class="control-btn">←</button>
+                <button id="down-btn" class="control-btn">↓</button>
+                <button id="right-btn" class="control-btn">→</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно таблицы лидеров -->
+    <div id="leaders-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Таблица лидеров</h2>
+                <button id="close-leaders-btn" class="close-btn">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Таблица для отображения топ-10 рекордов -->
+                <table id="leaders-table">
+                    <thead>
+                        <tr>
+                            <th>Имя</th>
+                            <th>Очки</th>
+                            <th>Дата</th>
+                        </tr>
+                    </thead>
+                    <tbody><!-- Заполняется динамически --></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключение js файла -->
+    <script src="script.js"></script>
+</body>
+</html>
