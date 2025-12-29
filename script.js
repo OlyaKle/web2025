@@ -1,6 +1,6 @@
 // Конфигурация
 const CONFIG = {
-    WEATHER_API_KEY: '15dc31c06f8b6a7021d6c5a61d1e0c84', // Ключ для OpenWeatherMap
+    WEATHER_API_KEY: '6a90b5bf4cccf3fef3d15e2e40395b92', // Ключ для OpenWeatherMap
     WEATHER_BASE_URL: 'https://api.openweathermap.org/data/2.5',
     GEOCODING_BASE_URL: 'https://api.openweathermap.org/geo/1.0',
     UNITS: 'metric',
