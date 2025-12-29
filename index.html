@@ -1,1 +1,93 @@
-  
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-cloud-sun"></i> Weather Forecast</h1>
+            <div class="header-actions">
+                <button id="refreshBtn" class="btn btn-primary">
+                    <i class="fas fa-sync-alt"></i> Обновить
+                </button>
+                <button id="addCityBtn" class="btn btn-secondary">
+                    <i class="fas fa-plus"></i> Добавить город
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div id="weatherContainer" class="weather-container">
+                <!-- Карточки погоды будут добавляться здесь -->
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Загружаем данные о погоде...</p>
+                </div>
+            </div>
+
+            <div class="empty-state" id="emptyState">
+                <i class="fas fa-map-marker-alt"></i>
+                <h2>Нет данных о погоде</h2>
+                <p>Добавьте ваш город или разрешите доступ к геолокации</p>
+                <button id="addFirstCityBtn" class="btn btn-primary">Добавить город</button>
+            </div>
+        </main>
+
+        <div class="modal" id="cityModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Добавить город</h2>
+                    <button class="close-btn" id="closeModalBtn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="cityInput">Название города:</label>
+                        <input type="text" id="cityInput" placeholder="Начните вводить название города...">
+                        <div class="suggestions" id="citySuggestions"></div>
+                    </div>
+                    <div class="form-group">
+                        <button id="saveCityBtn" class="btn btn-primary" disabled>
+                            <i class="fas fa-check"></i> Добавить
+                        </button>
+                        <button id="cancelBtn" class="btn btn-secondary">Отмена</button>
+                    </div>
+                    <div class="error-message" id="cityError"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="locationModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Доступ к геолокации</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="location-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Разрешить доступ к вашей геолокации для отображения погоды в вашем местоположении?</p>
+                    </div>
+                    <div class="form-group">
+                        <button id="allowLocationBtn" class="btn btn-primary">
+                            <i class="fas fa-check"></i> Разрешить
+                        </button>
+                        <button id="denyLocationBtn" class="btn btn-secondary">Отказать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Погодные данные предоставлены OpenWeatherMap</p>
+            <p>© 2023 Weather App</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>  
