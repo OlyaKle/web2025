@@ -1,1 +1,503 @@
+/* Базовые стили */
+:root {
+    --primary: #3498db;
+    --secondary: #2c3e50;
+    --success: #27ae60;
+    --danger: #e74c3c;
+    --warning: #f39c12;
+    --light: #ecf0f1;
+    --dark: #2c3e50;
+    --gray: #95a5a6;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    min-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Шапка */
+.header {
+    background: var(--secondary);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Основной контент */
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Контейнер для погоды */
+.weather-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+/* Карточка погоды */
+.weather-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.weather-card:hover {
+    transform: translateY(-5px);
+}
+
+.weather-card.current {
+    border-left: 5px solid var(--primary);
+}
+
+.weather-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.city-info h3 {
+    font-size: 1.5rem;
+    color: var(--secondary);
+    margin-bottom: 5px;
+}
+
+.city-info .location-type {
+    font-size: 0.9rem;
+    color: var(--gray);
+    padding: 3px 10px;
+    background: var(--light);
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.temp-display {
+    text-align: right;
+}
+
+.temp-display .current-temp {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.temp-display .feels-like {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.weather-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.weather-main {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 10px 0;
+    color: var(--secondary);
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.detail-item i {
+    color: var(--primary);
+    width: 20px;
+}
+
+.forecast {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.forecast h4 {
+    margin-bottom: 15px;
+    color: var(--secondary);
+}
+
+.forecast-days {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.forecast-day {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+    padding: 10px;
+    background: var(--light);
+    border-radius: 10px;
+}
+
+.forecast-day .day {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.forecast-day .temp {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.delete-btn {
+    background: var(--danger);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    margin-top: 15px;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+/* Кнопки */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--light);
+    color: var(--dark);
+}
+
+.btn-secondary:hover {
+    background: #d5dbdb;
+}
+
+/* Модальные окна */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalFade 0.3s;
+}
+
+@keyframes modalFade {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    color: var(--secondary);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--gray);
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--danger);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* Форма */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.suggestions {
+    position: absolute;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    width: calc(100% - 30px);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: var(--shadow);
+    display: none;
+}
+
+.suggestion-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.suggestion-item:hover {
+    background: var(--light);
+}
+
+.suggestion-item.active {
+    background: var(--primary);
+    color: white;
+}
+
+.error-message {
+    color: var(--danger);
+    margin-top: 10px;
+    padding: 10px;
+    background: #ffeaea;
+    border-radius: 8px;
+    display: none;
+}
+
+/* Загрузка */
+.loading {
+    text-align: center;
+    padding: 50px;
+    grid-column: 1 / -1;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--light);
+    border-top: 5px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Состояние "пусто" */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray);
+    display: none;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.empty-state h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--secondary);
+}
+
+/* Футер */
+.footer {
+    background: var(--light);
+    padding: 20px;
+    text-align: center;
+    color: var(--gray);
+    border-top: 1px solid #ddd;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header-actions {
+        justify-content: center;
+    }
+    
+    .weather-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .weather-card-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .temp-display {
+        text-align: left;
+    }
+    
+    .forecast-days {
+        flex-wrap: wrap;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        border-radius: 15px;
+    }
+    
+    .header, .main-content {
+        padding: 15px;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+}
