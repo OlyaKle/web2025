@@ -18,24 +18,33 @@ const state = {
 };
 
 // Элементы DOM
-const elements = {
-    weatherContainer: document.getElementById('weatherContainer'),
-    loading: document.getElementById('loading'),
-    emptyState: document.getElementById('emptyState'),
-    addCityBtn: document.getElementById('addCityBtn'),
-    addFirstCityBtn: document.getElementById('addFirstCityBtn'),
-    refreshBtn: document.getElementById('refreshBtn'),
-    cityModal: document.getElementById('cityModal'),
-    locationModal: document.getElementById('locationModal'),
-    closeModalBtn: document.getElementById('closeModalBtn'),
-    cityInput: document.getElementById('cityInput'),
-    citySuggestions: document.getElementById('citySuggestions'),
-    saveCityBtn: document.getElementById('saveCityBtn'),
-    cancelBtn: document.getElementById('cancelBtn'),
-    cityError: document.getElementById('cityError'),
-    allowLocationBtn: document.getElementById('allowLocationBtn'),
-    denyLocationBtn: document.getElementById('denyLocationBtn')
-};
+let elements = {}; 
+
+// Инициализация приложения
+document.addEventListener('DOMContentLoaded', () => {
+    // Элементы инициализируются после загрузки DOM
+    elements = {
+        weatherContainer: document.getElementById('weatherContainer'),
+        loading: document.getElementById('loading'),
+        emptyState: document.getElementById('emptyState'),
+        addCityBtn: document.getElementById('addCityBtn'),
+        addFirstCityBtn: document.getElementById('addFirstCityBtn'),
+        refreshBtn: document.getElementById('refreshBtn'),
+        cityModal: document.getElementById('cityModal'),
+        locationModal: document.getElementById('locationModal'),
+        closeModalBtn: document.getElementById('closeModalBtn'),
+        cityInput: document.getElementById('cityInput'),
+        citySuggestions: document.getElementById('citySuggestions'),
+        saveCityBtn: document.getElementById('saveCityBtn'),
+        cancelBtn: document.getElementById('cancelBtn'),
+        cityError: document.getElementById('cityError'),
+        allowLocationBtn: document.getElementById('allowLocationBtn'),
+        denyLocationBtn: document.getElementById('denyLocationBtn')
+    };
+    
+    initializeApp();
+    setupEventListeners();
+});
 
 // Инициализация приложения
 document.addEventListener('DOMContentLoaded', () => {
