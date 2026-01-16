@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        const url = new URL(window.location.href);
+        const arrStr = url.search.slice(1); // убираем "?"
+        const arr = eval(arrStr); // преобразуем строку в массив
+        arr.sort((a, b) => a - b); // сортировка чисел
+        document.title = arr.toString(); // в заголовок окна
+    </script>
+</head>
+<body>
+    <h4>odk</h4>
+</body>
+</html>
